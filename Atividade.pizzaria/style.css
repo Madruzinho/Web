@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(255, 238, 217);
+    font-family: "Helvetica Neue", Arial, sans-serif;   
+}
+
+header {
+    position: sticky;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(223, 0, 0);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.titulo-principal {
+    padding: 20px;
+    color: red;
+    text-align: center;
+}
+
+.container-pizzas {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px; margin-right: 100px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card-pizza {
+    position: relative;
+    display: block;
+    height: 400px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.card-pizza:hover {
+    transform: translateY(-5px);
+}
+
+.badge-novo {
+    position: absolute; left: 230px; top: 10px;
+    background-color: rgb(160, 104, 0);
+    color: white;
+    font-size: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.imagem-pizza {
+    background: linear-gradient(135deg, #eea41a 0%, #dd7d00 100%);
+    height: 50%;
+    margin-bottom: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nome-pizza {
+    padding-left: 15px;
+    color: red;
+}
+
+.ingredientes {
+    padding: 15px;
+    color: gray;
+}
+
+.precos {
+    padding-left: 15px;
+    gap: 10px;
+    display: flex;
+}
+
+.preco-antigo {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.preco-atual {
+    font-weight: bold;
+    color: red;
+}
+
+.botao-pedir {
+    margin-top: 40px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 10px;
+}
