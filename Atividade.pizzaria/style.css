@@ -123,27 +123,16 @@ header {
 }
 
 .mensagem-pedido {
-
     position: fixed;
-
     top: 20px;
-
     right: 20px;
-
     background: #2ecc71;
-
     color: white;
-
     padding: 15px 20px;
-
     border-radius: 8px;
-
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
     display: none;
-
     z-index: 1000;
-
 }
 
 #pedido {
@@ -151,27 +140,14 @@ header {
 }
 
 .conteudo-extra {
+    padding: 50px;
+    margin: 50px;
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    line-height: 2;
+}
 
-            height: 800px;
-
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-
-            margin: 20px auto;
-
-            max-width: 800px;
-
-            border-radius: 8px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: white;
-
-            font-size: 24px;
-
-            text-align: center;
-
-        }
+.conteudo-extra h2 {
+    color: red;
+}
