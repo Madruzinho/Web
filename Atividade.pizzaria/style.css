@@ -105,7 +105,7 @@ header {
 
 .pedir {
     display: flex;
-    aligh-items: center;
+    align-items: center;
     justify-content: center;
 }
 
