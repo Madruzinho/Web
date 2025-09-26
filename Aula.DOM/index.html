@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="titulo-principal">aula</h1>
+        <div class="conteudo">
+            <p> Este é um exemplo simples com JS</p>
+            <ul id="lista-de-itens">
+                <li class="item-lista">Item 1</li>
+                <li class="item-lista">Item 2</li>
+                <li class="item-lista" id="item-especial">Item 3</li>
+                <li class="item-lista">Item 4</li>
+            </ul>
+        </div>
+
+        <h2>Botoes com JS</h2>
+        <div class="lista-de-botoes">
+        <button onclick="mudarTitulo()">Mudar titulo</button>
+        <button onclick="mudarEstilo()">Destacar item</button>
+        <button onclick="adicionarItem()">Adicionar na Lista</button>
+        <button onclick="criarElement()">Criar Element</button>
+        </div>
+
+        <div id="novo-container">
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
