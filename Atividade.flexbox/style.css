@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(255, 238, 217);
+    background-color: rgba(220, 220, 220, 1);
     font-family: "Helvetica Neue", Arial, sans-serif;   
 }
 
@@ -15,7 +15,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 70px;
     background-color: #2c3c51;
 }
 
@@ -38,5 +38,85 @@ header {
     font-size: 20px;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 250px;
+    margin: 20px;
+}
 
+.menu-lateral {
+    color: white;
+    padding-top: 20px;
+    width: 20%;
+    background-color: #2c3c51;
+}
 
+.menu-lateral a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #d0d0d0ff;
+    line-height: 2;
+    padding: 20px;
+}
+
+.conteudo h2 {
+    font-size: 40px;
+}
+
+.conteudo p {
+    font-size: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    padding: 25px;
+    margin: 5px;
+    width: 200px;
+    background-color: #3b4a93ff;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 3px;
+}
+
+.publicidade {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.ad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30%;
+    width: 300px;
+    background-color: red;
+    border-radius: 10px;
+    border-width: 3px;
+    color: white;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 50px;
+    width: 100%;
+    background-color: #2c3c51;
+}
