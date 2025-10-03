@@ -1,0 +1,123 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    background-color: #ecf0f1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+header nav a {
+    color: #3498db;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 0.9em;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 200px 1fr 180px;
+    gap: 15px;
+    padding: 15px 20px;
+    flex-grow: 1;
+}
+
+.menu-lateral {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.menu-lateral ul {
+    list-style: none;
+}
+
+.menu-lateral li {
+    margin-bottom: 10px;
+}
+
+.menu-lateral a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-lateral a:hover {
+    text-decoration: underline;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+section h2 {
+    margin-bottom: 5px;
+}
+
+section p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.card {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.publicidade {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ad {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+}
