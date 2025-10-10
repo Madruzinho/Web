@@ -1,19 +1,18 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url("./font/digital-7.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-
-button:hover {
-    background-color: rgb(185, 185, 185);
 }
 
 .calculadora {
@@ -23,20 +22,30 @@ button:hover {
     height: 700px;
     width: 500px;
     padding: 20px;
-    background-color: gray;
+    background-color: rgb(59, 59, 59);
     margin-top: 100px;
     border-radius: 15px;
     border-color: rgb(58, 58, 58);
     border-width: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #visor {
     display: flex;
     height: 100%;
     width: 100%;
-    background-color: rgb(59, 143, 252);
-    justify-content: center;
+    background-color: rgb(62, 122, 53);
+    justify-content: start;
     align-items: center;
+    border-radius: 15px;
+    border-width: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.486);
+    color: rgb(255, 255, 255);
+    font-family: "digital-7";
+    font-size: 4em;
+    padding-left: 20px;
+    padding-right: 20px;
+    letter-spacing: 5px;
 }
 
 .teclado {
@@ -49,6 +58,14 @@ button:hover {
     font-size: 1.8em;
     border-radius: 10px;
     margin: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.486);
+    background-color: gray;
+    transition: filter 0.2s ease,  scale 0.5s ease;
+}
+
+button:hover {
+    filter: brightness(80%);
+    transform: scale(0.9);
 }
 
 #somar {
@@ -56,6 +73,22 @@ button:hover {
     grid-row: 4 / 6;
 }
 
-.num {
-    color: white;
+#clear {
+    background-color: #d84444
 }
+
+#raiz, #porcentagem {
+    background-color: #24568f;
+}
+
+#divisao, #multiplicacao, #subtracao, #somar {
+    background-color: rgb(230, 168, 54);
+}
+
+#igual {
+    background-color: rgb(58, 180, 58);
+}
+
+
+
+

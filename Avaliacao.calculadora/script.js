@@ -12,7 +12,7 @@ teclas.forEach(tecla => {
         const id = tecla.id;
 
         // Botão OFF limpa tudo
-        if (id === "off") {
+        if (id === "clear") {
             expressao = "";
             visor.innerText = "";
             return;
