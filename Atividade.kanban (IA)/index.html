@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Kanban - Gerenciador de Tarefas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .add-task-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        #taskInput {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        #taskInput:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #addTaskBtn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #addTaskBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        #addTaskBtn:active {
+            transform: translateY(0);
+        }
+
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .column {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            min-height: 400px;
+        }
+
+        .column-header {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .todo .column-header {
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .in-progress .column-header {
+            color: #3498db;
+            border-color: #3498db;
+        }
+
+        .done .column-header {
+            color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .task-count {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .task-list {
+            min-height: 300px;
+        }
+
+        .task {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: grab;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid;
+        }
+
+        .task:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .task.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .todo .task {
+            border-color: #f39c12;
+        }
+
+        .in-progress .task {
+            border-color: #3498db;
+        }
+
+        .done .task {
+            border-color: #27ae60;
+        }
+
+        .task-content {
+            margin-bottom: 10px;
+            color: #333;
+            word-wrap: break-word;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .task-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-forward {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-forward:hover {
+            background: #2980b9;
+        }
+
+        .btn-back {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            margin-left: auto;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #bdc3c7;
+            padding: 40px 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Mini Kanban</h1>
+            <p>Gerencie suas tarefas de forma visual e intuitiva</p>
+        </header>
+
+        <div class="add-task-section">
+            <input type="text" id="taskInput" placeholder="Digite sua nova tarefa..." />
+            <button id="addTaskBtn">➕ Adicionar Tarefa</button>
+        </div>
+
+        <div class="kanban-board">
+            <div class="column todo">
+                <div class="column-header">
+                    📝 A Fazer
+                    <span class="task-count" id="todoCount">0</span>
+                </div>
+                <div class="task-list" id="todoList"></div>
+            </div>
+
+            <div class="column in-progress">
+                <div class="column-header">
+                    ⚙️ Em Progresso
+                    <span class="task-count" id="progressCount">0</span>
+                </div>
+                <div class="task-list" id="progressList"></div>
+            </div>
+
+            <div class="column done">
+                <div class="column-header">
+                    ✅ Concluído
+                    <span class="task-count" id="doneCount">0</span>
+                </div>
+                <div class="task-list" id="doneList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let taskIdCounter = 0;
+        let tasks = [];
+
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const todoList = document.getElementById('todoList');
+        const progressList = document.getElementById('progressList');
+        const doneList = document.getElementById('doneList');
+
+        function addTask() {
+            const taskText = taskInput.value.trim();
+            
+            if (taskText === '') {
+                alert('Por favor, digite uma tarefa!');
+                return;
+            }
+
+            const task = {
+                id: taskIdCounter++,
+                text: taskText,
+                status: 'todo'
+            };
+
+            tasks.push(task);
+            taskInput.value = '';
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(task => task.id !== id);
+            renderTasks();
+        }
+
+        function moveTask(id, newStatus) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.status = newStatus;
+                renderTasks();
+            }
+        }
+
+        function createTaskElement(task) {
+            const taskDiv = document.createElement('div');
+            taskDiv.className = 'task';
+            taskDiv.draggable = true;
+            taskDiv.dataset.id = task.id;
+
+            const content = document.createElement('div');
+            content.className = 'task-content';
+            content.textContent = task.text;
+
+            const actions = document.createElement('div');
+            actions.className = 'task-actions';
+
+            if (task.status === 'todo') {
+                const forwardBtn = document.createElement('button');
+                forwardBtn.className = 'task-btn btn-forward';
+                forwardBtn.textContent = '→ Iniciar';
+                forwardBtn.onclick = () => moveTask(task.id, 'progress');
+                actions.appendChild(forwardBtn);
+            }
+
+            if (task.status === 'progress') {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'task-btn btn-back';
+                backBtn.textContent = '← Voltar';
+                backBtn.onclick = () => moveTask(task.id, 'todo');
+                actions.appendChild(backBtn);
+
+                const forwardBtn = document.createElement('button');
+                forwardBtn.className = 'task-btn btn-forward';
+                forwardBtn.textContent = '→ Concluir';
+                forwardBtn.onclick = () => moveTask(task.id, 'done');
+                actions.appendChild(forwardBtn);
+            }
+
+            if (task.status === 'done') {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'task-btn btn-back';
+                backBtn.textContent = '← Reabrir';
+                backBtn.onclick = () => moveTask(task.id, 'progress');
+                actions.appendChild(backBtn);
+            }
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'task-btn btn-delete';
+            deleteBtn.textContent = '🗑️ Excluir';
+            deleteBtn.onclick = () => deleteTask(task.id);
+            actions.appendChild(deleteBtn);
+
+            taskDiv.appendChild(content);
+            taskDiv.appendChild(actions);
+
+            taskDiv.addEventListener('dragstart', handleDragStart);
+            taskDiv.addEventListener('dragend', handleDragEnd);
+
+            return taskDiv;
+        }
+
+        function renderTasks() {
+            todoList.innerHTML = '';
+            progressList.innerHTML = '';
+            doneList.innerHTML = '';
+
+            const todoTasks = tasks.filter(t => t.status === 'todo');
+            const progressTasks = tasks.filter(t => t.status === 'progress');
+            const doneTasks = tasks.filter(t => t.status === 'done');
+
+            todoTasks.forEach(task => todoList.appendChild(createTaskElement(task)));
+            progressTasks.forEach(task => progressList.appendChild(createTaskElement(task)));
+            doneTasks.forEach(task => doneList.appendChild(createTaskElement(task)));
+
+            document.getElementById('todoCount').textContent = todoTasks.length;
+            document.getElementById('progressCount').textContent = progressTasks.length;
+            document.getElementById('doneCount').textContent = doneTasks.length;
+
+            if (todoTasks.length === 0) {
+                todoList.innerHTML = '<div class="empty-message">Nenhuma tarefa pendente</div>';
+            }
+            if (progressTasks.length === 0) {
+                progressList.innerHTML = '<div class="empty-message">Nenhuma tarefa em andamento</div>';
+            }
+            if (doneTasks.length === 0) {
+                doneList.innerHTML = '<div class="empty-message">Nenhuma tarefa concluída</div>';
+            }
+
+            setupDropZones();
+        }
+
+        let draggedTaskId = null;
+
+        function handleDragStart(e) {
+            draggedTaskId = parseInt(e.target.dataset.id);
+            e.target.classList.add('dragging');
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+
+        function setupDropZones() {
+            [todoList, progressList, doneList].forEach(list => {
+                list.addEventListener('dragover', handleDragOver);
+                list.addEventListener('drop', handleDrop);
+            });
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            
+            const dropZone = e.currentTarget;
+            let newStatus;
+
+            if (dropZone === todoList) newStatus = 'todo';
+            if (dropZone === progressList) newStatus = 'progress';
+            if (dropZone === doneList) newStatus = 'done';
+
+            if (draggedTaskId !== null) {
+                moveTask(draggedTaskId, newStatus);
+                draggedTaskId = null;
+            }
+        }
+
+        addTaskBtn.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        renderTasks();
+    </script>
+</body>
+</html>

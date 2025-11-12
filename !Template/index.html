@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Base - Exemplo</title>
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header class="container flex-between mt-md mb-md">
+    <h1>TEMPLATE</h1>
+    <nav class="flex">
+      <a href="#">Início</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <hr class="container mb-md">
+
+  <!-- ====== HERO SECTION ====== -->
+  <section class="container text-center mt-lg mb-lg">
+    <h2>Bem-vindo ao Template Base</h2>
+    <p class="mt-sm mb-md">
+      Esse é um modelo de estrutura CSS pronta para iniciar meus projetos com praticidade e estilo.
+    </p>
+    <button class="btn">Botão padrão</button>
+    <button class="btn-outline">Botão contornado</button>
+  </section>
+
+  <!-- ====== GRID SECTION ====== -->
+  <section class="container mt-lg">
+    <h2 class="mb-md text-center">Layout em Grid</h2>
+    <div class="grid grid-3">
+      <div class="p-md shadow rounded text-center" >Caixa 1</div>
+      <div class="p-md shadow rounded text-center" >Caixa 2</div>
+      <div class="p-md shadow rounded text-center" >Caixa 3</div>
+    </div>
+  </section>
+
+  <!-- ====== FLEX SECTION ====== -->
+  <section class="container mt-lg">
+    <h2 class="mb-md text-center">Exemplo de Flexbox</h2>
+    <div class="flex-between shadow p-md rounded" >
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+    </div>
+  </section>
+
+  <!-- ====== FORMULÁRIO ====== -->
+  <section class="container mt-lg mb-lg">
+    <h2 class="text-center mb-md">Formulário de Contato</h2>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" placeholder="Seu nome">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Seu email">
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" rows="4" placeholder="Digite sua mensagem..."></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <p>Desenvolvido com por Guilherme — Template Base v1.0</p>
+    <p>
+      <button id="btn-tema" class="btn-outline mt-sm">Alternar Tema 🌗</button>
+    </p>
+  </footer>
+
+  <!-- ====== SCRIPT PARA TEMA ESCURO ====== -->
+  <script>
+    const btnTema = document.getElementById('btn-tema');
+    const body = document.body;
+
+    btnTema.addEventListener('click', () => {
+      const temaAtual = body.getAttribute('data-tema');
+      if (temaAtual === 'dark') {
+        body.removeAttribute('data-tema');
+        btnTema.textContent = 'Alternar Tema 🌑';
+      } else {
+        body.setAttribute('data-tema', 'dark');
+        btnTema.textContent = 'Alternar Tema ☀️';
+      }
+    });
+  </script>
+
+</body>
+</html>
