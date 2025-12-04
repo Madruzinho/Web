@@ -1,0 +1,270 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.placar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.placar-item {
+  text-align: center;
+}
+
+.placar-label {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.placar-valor {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.placar-jogador {
+  color: #3b82f6;
+}
+
+.placar-computador {
+  color: #ef4444;
+}
+
+.placar-vs {
+  font-size: 2rem;
+  color: #999;
+  font-weight: bold;
+}
+
+.opcoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.botao-opcao {
+  background: gray;
+  border: none;
+  border-radius: 15px;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.botao-opcao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.botao-opcao:active {
+  transform: translateY(0);
+}
+
+.imagem-opcao {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+.resultado-container {
+  background: #f3f4f6;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.escolhas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.escolha {
+  text-align: center;
+}
+
+.escolha-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.escolha-imagem {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+  margin: 15px auto;
+  animation: aparecer 0.5s ease-out;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.escolha-texto {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.vs {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #999;
+}
+
+.resultado-texto {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.vitoria {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.empate {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.derrota {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.botao-reiniciar {
+  width: 100%;
+  background: #374151;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao-reiniciar:hover {
+  background: #1f2937;
+  transform: translateY(-2px);
+}
+
+.botao-reiniciar:active {
+  transform: translateY(0);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .placar {
+    gap: 20px;
+  }
+
+  .placar-valor {
+    font-size: 2.5rem;
+  }
+
+  .opcoes {
+    gap: 10px;
+  }
+
+  .botao-opcao {
+    padding: 15px 20px;
+  }
+
+  .imagem-opcao {
+    width: 60px;
+    height: 60px;
+  }
+
+  .escolha-imagem {
+    width: 100px;
+    height: 100px;
+  }
+
+  .resultado-texto {
+    font-size: 1.4rem;
+  }
+}
