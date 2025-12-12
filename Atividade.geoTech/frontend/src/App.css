@@ -38,7 +38,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.botao-opcao {
+button {
   background: gray;
   border: none;
   border-radius: 15px;
@@ -55,11 +55,61 @@ h1 {
   gap: 10px;
 }
 
-.botao-opcao:hover {
+button:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-.botao-opcao:active {
+button:active {
   transform: translateY(0);
+}
+
+.escolhas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+input,
+select {
+  width: 100%;
+  max-width: 300px;     
+  padding: 10px 14px;
+  font-size: 16px;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #4b79ff;
+  box-shadow: 0 0 6px rgba(75, 121, 255, 0.4);
+}
+
+input:hover,
+select:hover {
+  border-color: #999;
+}
+
+.resultado {
+  color: black;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.resultado-container {
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
 }
