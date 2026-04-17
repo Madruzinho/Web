@@ -5,7 +5,7 @@ import styles from './Style'
 import { Logo } from '../../components/logo/Logo';
 import { Menu } from '../../components/menu/Menu';
 import { SenhaInput } from '../../components/senhaInput/senhaInput';
-import { senhaBotao } from '../../components/senhaBotao/senhaBotao';
+import { SenhaBotao } from '../../components/senhaBotao/senhaBotao';
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <Logo />
       </View>
       <View style={styles.inputContainer}>
-        <SenhaInput />
+        <SenhaBotao />
       </View>
 
       <Menu></Menu>

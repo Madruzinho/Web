@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#e5bf3c'
+    color: '#000000'
   },
   imagem: {
     resizeMode: 'contain',

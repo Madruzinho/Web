@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     appContainer: {
         flex: 1,
-        backgroundColor: '#4d4d4d',
+        backgroundColor: '#f3f3f3',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -11,22 +11,25 @@ const styles = StyleSheet.create({
     logoContainer: {
         width: '80%',
         flexDirection: 'column',
-        borderColor: 'white',
         borderWidth: 3,
+        borderRadius: '10%',
+        borderColor: '#ffffff00',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
         marginBottom: 50,
         paddingTop: 20,
         paddingBottom: 20,
-        backgroundColor: "#4d4d4d",
+        backgroundColor: "#d6d6d6",
+        boxShadow: '0px 10px 15px -3px rgba(0, 0, 0, 0.5)',
     },
     inputContainer: {
         width: '80%',
-        borderColor: 'white',
+        borderColor: '#ffffff00',
         borderWidth: 2,
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        boxShadow: '0px 10px 15px -3px rgba(0, 0, 0, 0.1)',
     },
 
 });
