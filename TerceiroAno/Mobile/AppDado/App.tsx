@@ -12,24 +12,34 @@ export default function App() {
   }
 
   const [dado, setDado] = useState(0);
+  const [resposta, setResposta] = useState(0);
+  const [sorteio, setSorteio] = useState('Numero sorteado: ')
+  const [imagem, setImagem] = useState(0)
 
   function numeroDado() {
     let novo;
 
     do {
       novo = numeroAleatorio(0, 5);
+      setImagem(novo)
     } while (novo === dado);
 
     setDado(novo);
+    setImagem(novo)
   }
 
-  const [resposta, setResposta] = useState(0);
+
 
   async function SortearDado() {
+    setSorteio('Rolando o dado')
+
     for (let intervalo = 0; intervalo < 10; intervalo++) {
       numeroDado();
       await sleep(100);
       }
+      setResposta(dado)
+      setImagem(dado)
+      setSorteio(`Numero sorteado: ${dado + 1}`)
     }
 
   const imagens = [
@@ -51,11 +61,11 @@ export default function App() {
   ];
 
   return (
-    <View style={[styles.container, { backgroundColor: cores[dado] }]}>
+    <View style={[styles.container, { backgroundColor: cores[resposta] }]}>
       <Pressable onPress={SortearDado}>
-        <Image style={styles.Imagem} source={imagens[dado]} />
+        <Image style={styles.Imagem} source={imagem + 1} />
       </Pressable>
-      <Text style={styles.Texto}>Numero sorteado: {dado + 1} </Text>
+      <Text style={styles.Texto}>{sorteio}</Text>
     </View>
   );
 }

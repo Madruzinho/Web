@@ -1,0 +1,4 @@
+node -v
+npm -v
+npx create-expo-app --template
+npx expo start
